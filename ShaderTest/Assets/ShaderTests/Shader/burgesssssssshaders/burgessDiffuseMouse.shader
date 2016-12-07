@@ -1,7 +1,8 @@
 ﻿  Shader "Example/Diffuse Simple" {
     Properties {
-      _MousePos ("MousePos", Vector) = (1,1,1,1);
+      _MousePos ("MousePos", Vector) = (1,1,1,1)
     }
+
     SubShader {
       Tags { "RenderType" = "Opaque" }
       CGPROGRAM
@@ -9,6 +10,9 @@
       struct Input {
           float4 color : COLOR;
       };
+
+      float3 _MousePos;
+
       void surf (Input IN, inout SurfaceOutput o) {
       	float x = _MousePos.x;
       	float y = _MousePos.y;
