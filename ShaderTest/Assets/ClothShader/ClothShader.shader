@@ -19,9 +19,9 @@ Shader "Custom/ClothShader" {
       void vert (inout appdata_full v) {
       	float4 vv = mul( unity_ObjectToWorld, v.vertex );
 
-//          v.vertex.y += v.normal * _Amount * vv.x;
-          v.vertex.x += vv.y * _Amount*sin(v.vertex.z+(_Time[2]));
-          v.vertex.y += vv.y * _Amount*sin(v.vertex.z+(_Time[3]));
+          v.vertex.x += v.normal.y * _Amount*sin(v.vertex.z+(_Time[2]));
+//          v.vertex.x += vv.y * _Amount*sin(v.vertex.z+(_Time[2]));
+//          v.vertex.y += vv.y * _Amount*sin(v.vertex.z+(_Time[3]));
 
       }
       sampler2D _MainTex;
