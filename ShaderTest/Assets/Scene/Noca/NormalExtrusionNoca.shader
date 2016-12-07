@@ -15,8 +15,11 @@
       };
       float _Amount;
       void vert (inout appdata_full v) {
-          v.vertex.z += v.normal * _Amount;
-          v.vertex.x += v.normal * _Amount*sin(v.vertex.y*(_Time[3]/2));
+          //v.vertex.x += v.normal * _Amount;
+          //v.vertex.y += v.normal * _Amount*sin(v.vertex.x*(_Time[3]));
+          v.vertex.x += sin (_Time[2]);
+          v.vertex.y += v.normal * _Amount*sin (v.vertex.x*_Time[2]);
+          v.vertex.z += sin (_Time[2]);
 
       }
       sampler2D _MainTex;
