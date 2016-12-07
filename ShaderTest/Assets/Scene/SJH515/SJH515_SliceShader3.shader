@@ -17,7 +17,11 @@
 	fixed4 _Color;
 
 	void surf(Input IN, inout SurfaceOutput o) {
-		clip(frac((IN.worldPos.x / 2 + IN.worldPos.y/2 + IN.worldPos.z*0.1) * 5) - 0.5); //Clips out horizontal strips at a specific interval.
+
+		/*Clip actually gets rid of the strips. The smaller the multiplier on the frac() is, the bigger the strips.
+		Similarly, the smaller the subtraction is, the closer together the strips are.
+		*/
+		clip(frac((IN.worldPos.x + IN.worldPos.y + IN.worldPos.z*0.1) * 5) - 0.5);
 		fixed4 c = _Color;
 		o.Albedo = 1 * c.rgb; //Set the albedo to white
 	}
