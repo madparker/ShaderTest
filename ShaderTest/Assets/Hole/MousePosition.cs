@@ -16,12 +16,22 @@ public class MousePosition : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+//		Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+//
+//		mouseWorldPos.z = Camera.main.nearClipPlane;
 
-		mouseWorldPos.z = Camera.main.nearClipPlane;
+		RaycastHit hit;
 
-		print("mousePos: " + Input.mousePosition);
+		if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity)){
 
-		mat.SetVector("_MousePos", mouseWorldPos);
+			Vector3 mousePos = hit.point;
+
+//			mousePos.z = transform.position.z;
+
+			print("mousePos: " + mousePos);
+
+			mat.SetVector("_MousePos", mousePos);
+		}
+
 	}
 }

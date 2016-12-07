@@ -16,9 +16,10 @@
       sampler2D _MainTex;
       sampler2D _BumpMap;
       void surf (Input IN, inout SurfaceOutput o) {
-          clip (frac((IN.worldPos.y+IN.worldPos.z*0.1) * sin(IN.worldPos.x) + sin(IN.worldPos.y) + sin(IN.worldPos.z)) - 0.75);
+          clip (frac((IN.worldPos.y+IN.worldPos.z*0.1) * sin(IN.worldPos.x) + sin(IN.worldPos.y ) + sin(IN.worldPos.z  * (_Time * 0.3))) - 0.15);
 //          o.Albedo = tex2D (_MainTex, IN.uv_MainTex).rgb;
 		o.Albedo = float3(sin(IN.worldPos.x * 0.1), sin(IN.worldPos.y * 0.1), sin(IN.worldPos.z * 0.1));
+
           o.Normal = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap));
       }
       ENDCG
